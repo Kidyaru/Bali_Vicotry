@@ -9,7 +9,6 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Jika scroll lebih dari 50px (atau sesuaikan dengan tinggi Hero), set true
       if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
@@ -23,20 +22,25 @@ function App() {
 
   return (
     <div>
-      {/* Kirim state isScrolled ke Navbar */}
       <Navbar isScrolled={isScrolled} />
       
-      <div className="h-screen bg-cover bg-center relative" style={{ backgroundImage: `url(${heroImg})` }}>
+      {/* Tambahkan bg-fixed di sini. 
+          bg-fixed akan membuat gambar background tetap diam saat konten di atasnya di-scroll.
+      */}
+      <div 
+        className="h-screen bg-cover bg-center bg-fixed relative" 
+        style={{ backgroundImage: `url(${heroImg})` }}
+      >
         <div className="absolute inset-0 bg-black/20"></div>
         <Hero />
       </div>
 
-      {/* ServiceGrid diletakkan di luar div h-screen supaya bisa di-scroll */}
-      <div id="services">
+      {/* Konten di bawah ini akan meluncur menutupi background fixed di atas */}
+      <div id="services" className="relative z-10 bg-white">
         <ServiceGrid />
       </div>
       
-      <section className="py-20 text-center" id="center">
+      <section className="py-20 text-center bg-white" id="center">
         Hello World
       </section>
     </div>

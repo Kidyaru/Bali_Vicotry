@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+
 // Import semua gambar sesuai struktur folder kamu
 import aloe_vera_massage from "../img/paket/Aloe-Vera-Massage.jpg";
 import traditional_massage from "../img/paket/balinese4.jpg";
@@ -151,22 +153,40 @@ function ServiceGrid() {
   ];
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         {allPackages.map((category, index) => (
           <div key={index} className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-gray-800 border-b-2 border-amber-500 inline-block pb-2">
+            {/* Judul Kategori Muncul dari Bawah */}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-3xl font-bold mb-8 text-gray-800 border-b-2 border-amber-500 inline-block pb-2"
+            >
               {category.category}
-            </h2>
+            </motion.h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {category.services.map((service) => (
-                <div
+                <motion.div
                   key={service.id}
-                  className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col"
+                  // Animasi per card: Dari bawah (y: 50) ke posisi asli (y: 0)
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ 
+                    duration: 0.6, 
+                    ease: "easeOut" 
+                  }}
+                  whileHover={{ y: -10 }} // Efek melayang saat kursor di atas card
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col"
                 >
-                  <div className="relative h-56">
-                    <img
+                  <div className="relative h-56 overflow-hidden">
+                    <motion.img
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.4 }}
                       src={service.image}
                       alt={service.name}
                       className="w-full h-full object-cover"
@@ -190,16 +210,17 @@ function ServiceGrid() {
                       ))}
                     </div>
 
-                    <a
+                    <motion.a
+                      whileTap={{ scale: 0.95 }}
                       href={`https://wa.me/628123456789?text=I%20want%20to%20book%20${encodeURIComponent(service.name)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full bg-green-600 hover:bg-green-700 text-white text-center py-3 rounded-lg font-bold transition-colors uppercase tracking-tight text-xs"
+                      className="w-full bg-amber-600 hover:bg-amber-700 text-white text-center py-3 rounded-lg font-bold transition-colors uppercase tracking-tight text-xs"
                     >
                       Book {service.name} via WhatsApp
-                    </a>
+                    </motion.a>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
