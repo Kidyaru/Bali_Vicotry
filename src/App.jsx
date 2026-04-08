@@ -1,49 +1,35 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Navbar from "./assets/components/Navbar";
-import heroImg from "./assets/img/Gambar_Hero.png";
-import Hero from "./assets/components/Hero";
-import ServiceGrid from "./assets/components/ServiceGrid";
+import Home from "./assets/pages/Home";
+import About from "./assets/pages/About"; // Ubah nama variabel jadi About agar sinkron
+import ScrollToTop from "./assets/components/ScrollToTop";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div>
+    <Router>
+      {/* 1. ScrollToTop: Memastikan setiap pindah page, scroll balik ke nol */}
+      <ScrollToTop />
+      
+      {/* 2. Navbar: Ada di luar Routes supaya selalu muncul */}
       <Navbar isScrolled={isScrolled} />
       
-      {/* Tambahkan bg-fixed di sini. 
-          bg-fixed akan membuat gambar background tetap diam saat konten di atasnya di-scroll.
-      */}
-      <div 
-        className="h-screen bg-cover bg-center bg-fixed relative" 
-        style={{ backgroundImage: `url(${heroImg})` }}
-      >
-        <div className="absolute inset-0 bg-black/20"></div>
-        <Hero />
-      </div>
-
-      {/* Konten di bawah ini akan meluncur menutupi background fixed di atas */}
-      <div id="services" className="relative z-10 bg-white">
-        <ServiceGrid />
-      </div>
-      
-      <section className="py-20 text-center bg-white" id="center">
-        Hello World
-      </section>
-    </div>
+      {/* 3. Routes: Konten yang berubah-ubah sesuai URL */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} /> 
+      </Routes>
+    </Router>
   );
 }
 

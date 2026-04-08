@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black/25 z-0"></div>
 
       <div className="relative z-10 text-center max-w-3xl">
-        <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
+        <h1 className="text-4xl md:text-6xl font-great-vibes text-white leading-tight drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
           Bali Victory Massage
         </h1>
 
