@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { MapPin } from "lucide-react"; // Import ikon lokasi
 
 const PackageDetail = () => {
   const packages = [
@@ -20,11 +21,10 @@ const PackageDetail = () => {
   ];
 
   return (
-    // Padding atas dikurangi dari py-20 menjadi pt-10 pb-20
     <section className="pt-10 pb-20 bg-white px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
-        {/* HEADER MENU - Margin bottom dikurangi dari mb-16 menjadi mb-8 */}
+        {/* HEADER MENU */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,22 +38,20 @@ const PackageDetail = () => {
           <div className="relative flex items-center justify-center">
             <div className="hidden md:block flex-grow border-t border-amber-200/60"></div>
             <h2 className="mx-8 text-3xl md:text-5xl font-bold text-amber-950 tracking-tight">
-              Best In-Call Spa Packages in Bali Only IDR 600k / 2 hours
+              Best Spa Packages in Bali Only IDR 600k / 2 hours
             </h2>
             <div className="hidden md:block flex-grow border-t border-amber-200/60"></div>
           </div>
         </motion.div>
 
-        {/* BUNGKUSAN UTAMA */}
+        {/* BUNGKUSAN UTAMA PAKET */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-amber-950 border-2 border-amber-900 rounded-[3rem] p-6 md:p-12 shadow-2xl relative"
+          className="bg-amber-950 border-2 border-amber-900 rounded-[3rem] p-6 md:p-12 shadow-2xl relative mb-12"
         >
-          
-
           <div className="relative z-10 grid md:grid-cols-2 gap-8 items-stretch">
             {packages.map((pkg, index) => (
               <motion.div 
@@ -98,9 +96,46 @@ const PackageDetail = () => {
           </div>
         </motion.div>
 
+        {/* BAGIAN ALAMAT / GOOGLE MAPS */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-8 items-center bg-stone-50 p-8 rounded-[3rem] border border-stone-100"
+        >
+          {/* Info Alamat */}
+          <div className="md:col-span-1 space-y-4">
+            <div className="flex items-center gap-3 text-amber-700">
+              <MapPin className="w-6 h-6" />
+              <h4 className="font-bold uppercase tracking-widest text-sm">Our Coverage Area</h4>
+            </div>
+            <p className="text-amber-950 font-serif text-2xl italic">Based in Kuta, serving all of Bali.</p>
+            <div className="pt-2">
+              <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest">Address:</span>
+              <p className="text-stone-700 text-sm font-medium">Jl. Bumbak Dauh No.122, Kerobokan Kelod, Kec. Kuta Utara, Kabupaten Badung, Bali 80361, Indonesia</p>
+            </div>
+          </div>
+
+          {/* Embed Google Maps */}
+          <div className="md:col-span-2 h-[300px] w-full rounded-[2rem] overflow-hidden shadow-inner border-4 border-white">
+            <iframe
+              title="Google Maps Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31552.086322474806!2d115.14995685121653!3d-8.690584683271297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd245006ea3a143%3A0xdf6a2ce46ca61318!2sBali%20Victory%20Massage%20%26%20SPA!5e0!3m2!1sid!2sus!4v1775931595510!5m2!1sid!2sus"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );
 };
+
+// <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31552.086322474806!2d115.14995685121653!3d-8.690584683271297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd245006ea3a143%3A0xdf6a2ce46ca61318!2sBali%20Victory%20Massage%20%26%20SPA!5e0!3m2!1sid!2sus!4v1775931595510!5m2!1sid!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 export default PackageDetail;

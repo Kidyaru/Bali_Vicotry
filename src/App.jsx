@@ -1,9 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Navbar from "./assets/components/Navbar";
 import Home from "./assets/pages/Home";
 import About from "./assets/pages/About";
-import ClientTestimonial from "./assets/pages/ClientTestimonial"; // 1. Impor komponen baru
+import ClientTestimonial from "./assets/pages/ClientTestimonial";
 import ScrollToTop from "./assets/components/ScrollToTop";
 
 function App() {
@@ -18,19 +18,17 @@ function App() {
   }, []);
 
   return (
+    // Kita tidak butuh basename kalau pakai HashRouter
     <Router>
-      {/* ScrollToTop: Memastikan setiap pindah page, scroll balik ke nol */}
       <ScrollToTop />
-      
-      {/* Navbar: Ada di luar Routes supaya selalu muncul */}
       <Navbar isScrolled={isScrolled} />
       
-      {/* Routes: Konten yang berubah-ubah sesuai URL */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} /> 
-        {/* 2. Tambahkan Route untuk Testimonial */}
         <Route path="/testimonials" element={<ClientTestimonial />} />
+        {/* Jika user nyasar atau halaman kosong, paksa balik ke Home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );

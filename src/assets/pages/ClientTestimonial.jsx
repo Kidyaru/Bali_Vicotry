@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Star, Quote, MapPin } from "lucide-react";
 import heroImg from "../img/About_Bg.png";
 import profileImg from "../img/mr_heater.jpg";
+import Footer from "../components/Footer";
 
 const ClientTestimonial = () => {
   const [rating, setRating] = useState(0);
@@ -15,7 +16,7 @@ const ClientTestimonial = () => {
     transition: { duration: 0.6 }
   };
 
-  const testimonials = [
+ const testimonials = [
     {
       name: "Mr. Heather",
       location: "Seminyak, Bali",
@@ -26,38 +27,38 @@ const ClientTestimonial = () => {
       name: "James Wilson",
       location: "Canggu, Bali",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
-      text: "Layanan on-call terbaik! Mereka sampai di villa saya dalam waktu 30 menit. Teknik pijat Bali-nya sangat autentik dan membuat tubuh saya segar kembali.",
+      text: "The best on-call service! They arrived at my villa within 30 minutes. The Balinese massage technique was incredibly authentic and left me feeling completely rejuvenated.",
     },
     {
       name: "Sarah Jenkins",
       location: "Ubud, Bali",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
-      text: "Sangat profesional dan tepat waktu. Sulit menemukan layanan terapi berkualitas tinggi yang bisa dipercaya, tapi Victory Massage melebihi ekspektasi saya.",
+      text: "Extremely professional and punctual. It's often hard to find high-quality, trustworthy therapy services, but Victory Massage truly exceeded my expectations.",
     },
     {
       name: "David Chen",
       location: "Nusa Dua, Bali",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80",
-      text: "Setelah seharian meeting, pijat aromaterapi mereka benar-benar menyelamatkan hari saya. Terapisnya sangat sopan dan membawa semua perlengkapan dengan lengkap.",
+      text: "After a long day of meetings, their aromatherapy massage was a total lifesaver. The therapist was very polite and came fully prepared with all the necessary equipment.",
     },
     {
       name: "Emma Thompson",
       location: "Sanur, Bali",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80",
-      text: "Sebagai instruktur yoga, saya sangat selektif soal bodywork. Tekanan deep tissue mereka sangat pas untuk melepaskan ketegangan otot kronis.",
+      text: "As a yoga instructor, I'm very selective about bodywork. Their deep tissue pressure was spot on for releasing chronic muscle tension. Truly impressive skill.",
     },
     {
       name: "Michael Rossi",
       location: "Kuta, Bali",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
-      text: "Istri saya dan saya memesan layanan berpasangan di hotel. Sangat nyaman, kami tidak perlu keluar macet-macetan di Kuta. Benar-benar layanan bintang lima!",
+      text: "My wife and I booked a couples massage at our hotel. It was so convenient not having to deal with Kuta traffic. Truly a five-star service!",
     }
   ];
 
   return (
     <div className="bg-stone-50 min-h-screen">
       {/* HERO SECTION - Perubahan: h-[60vh] di mobile, h-[40vh] di desktop */}
-      <div className="relative h-[60vh] md:h-[40vh] flex items-center justify-center bg-amber-950 overflow-hidden">
+      <div className="relative h-[80vh] md:h-[70vh] flex items-center justify-center bg-amber-950 overflow-hidden">
         <motion.img 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.3 }}
@@ -66,7 +67,7 @@ const ClientTestimonial = () => {
           className="absolute inset-0 w-full h-full object-cover"
           alt="Testimonials Background"
         />
-        {/* Container Teks: Memastikan w-full dan text-center agar simetris di HP */}
+        {/* Container Teks: Memastikan w-full and text-center agar simetris di HP */}
         <div className="relative z-10 text-center w-full px-6 flex flex-col items-center justify-center">
           <motion.h1 
             {...fadeIn} 
@@ -181,6 +182,9 @@ const ClientTestimonial = () => {
           </div>
         </div>
       </section>
+
+              <Footer/>
+
     </div>
   );
 };

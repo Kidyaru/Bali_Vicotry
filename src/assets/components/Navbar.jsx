@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // Tambahkan useEffect
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react"; // Import ikon
-import { motion, AnimatePresence } from "framer-motion"; // Untuk animasi halus
+import { Menu, X } from "lucide-react"; 
+import { motion, AnimatePresence } from "framer-motion"; 
 import Logo_img from "../img/Logo_img_Bali.png";
 
 const Navbar = ({ isScrolled }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [isBottom, setIsBottom] = useState(false); // State untuk mendeteksi dasar halaman
+
+  // Logika untuk mendeteksi posisi scroll paling bawah
+  useEffect(() => {
+    const handleScroll = () => {
+      // Periksa apakah user sudah scroll sampai bawah (dengan toleransi 20px)
+      const scrolledToBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 20;
+      setIsBottom(scrolledToBottom);
+      
+      // Tutup menu otomatis jika user scroll sampai bawah saat menu terbuka
+      if (scrolledToBottom) setIsOpen(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleScrollToTop = () => {
     setIsOpen(false);
@@ -21,7 +37,7 @@ const Navbar = ({ isScrolled }) => {
       setTimeout(() => {
         const element = document.getElementById("services");
         if (element) element.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      }, 300);
     } else {
       e.preventDefault();
       const element = document.getElementById("services");
@@ -33,7 +49,7 @@ const Navbar = ({ isScrolled }) => {
     { name: "Home", path: "/", action: handleScrollToTop },
     { name: "Treatments", path: "/", action: handleTreatmentClick },
     { name: "About", path: "/about", action: handleScrollToTop },
-    { name: "Testimonials", path: "/testimonials", action: handleScrollToTop },
+    { name: "Testimonial`s", path: "/testimonials", action: handleScrollToTop },
   ];
 
   return (
@@ -46,7 +62,6 @@ const Navbar = ({ isScrolled }) => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          {/* LOGO SECTION */}
           <Link
             to="/"
             onClick={handleScrollToTop}
@@ -60,18 +75,21 @@ const Navbar = ({ isScrolled }) => {
             </span>
           </Link>
 
-          {/* MENU DESKTOP */}
           <div className={`hidden md:flex space-x-10 font-medium text-sm uppercase tracking-widest transition-colors ${
             isScrolled ? "text-gray-800" : "text-white"
           }`}>
             {navLinks.map((link) => (
-              <Link key={link.name} to={link.path} onClick={link.action} className="hover:text-amber-500 transition-colors">
+              <Link 
+                key={link.name} 
+                to={link.path} 
+                onClick={link.action} 
+                className="hover:text-amber-500 transition-colors"
+              >
                 {link.name}
               </Link>
             ))}
           </div>
 
-          {/* TOMBOL ACTION (Desktop & Mobile) */}
           <button className={`px-6 md:px-8 py-2 md:py-2.5 rounded-full font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all ${
             isScrolled ? "bg-amber-600 text-white hover:bg-amber-700 shadow-lg" : "border border-white/50 text-white hover:bg-white hover:text-black"
           }`}>
@@ -80,43 +98,50 @@ const Navbar = ({ isScrolled }) => {
         </div>
       </nav>
 
-      {/* MOBILE FLOATING HAMBURGER MENU (POJOK KANAN BAWAH) */}
-      <div className="md:hidden fixed bottom-8 right-8 z-[60]">
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.5, y: 20 }}
-              className="absolute bottom-20 right-0 bg-white shadow-2xl rounded-[2rem] p-6 w-64 border border-stone-100"
+      {/* MOBILE MENU DENGAN ANIMASI HIDE SAAT DI BOTTOM */}
+      <AnimatePresence>
+        {!isBottom && ( // Hanya tampilkan jika tidak di paling bawah
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50, scale: 0.5 }}
+            className="md:hidden fixed bottom-8 right-8 z-[60]"
+          >
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.5, y: 20 }}
+                  className="absolute bottom-20 right-0 bg-white shadow-2xl rounded-[2rem] p-6 w-64 border border-stone-100"
+                >
+                  <div className="flex flex-col space-y-4">
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.name}
+                        to={link.path}
+                        onClick={link.action}
+                        className="text-amber-950 font-bold uppercase tracking-widest text-xs p-3 hover:bg-stone-50 rounded-xl transition-colors"
+                      >
+                        {link.name}
+                      </Link>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setIsOpen(!isOpen)}
+              className="bg-amber-600 text-white p-5 rounded-full shadow-2xl flex items-center justify-center border-4 border-white"
             >
-              <div className="flex flex-col space-y-4">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    to={link.path}
-                    onClick={link.action}
-                    className="text-amber-950 font-bold uppercase tracking-widest text-xs p-3 hover:bg-stone-50 rounded-xl transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-        {/* Floating Button */}
-        <motion.button
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setIsOpen(!isOpen)}
-          className="bg-amber-600 text-white p-5 rounded-full shadow-2xl flex items-center justify-center border-4 border-white"
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </motion.button>
-      </div>
-
-      {/* Overlay saat menu terbuka */}
       <AnimatePresence>
         {isOpen && (
           <motion.div

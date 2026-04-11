@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { CheckCircle, MapPin, Calendar, Smartphone, XCircle, ShieldCheck, Quote } from "lucide-react";
 import heroImg from "../img/About_Bg.png";
 import profileImg from "../img/mr_heater.jpg";
+import Footer from "../components/Footer";
 
 const About = () => {
   // Variabel animasi standar untuk elemen tunggal
@@ -23,8 +24,8 @@ const About = () => {
 
   const data = {
     aboutSession: {
-      title: "Best Massage on Call Bali & Premium In-Call Spa - Bali Victory Massage",
-      description: "Whether you choose to visit our premium in-call spa or book a massage on call in Bali, Bali Victory Massage delivers a luxury wellness experience tailored to your needs. Available across Seminyak, Canggu, Kuta, Ubud, Nusa Dua, and Sanur, our professional therapists provide authentic Balinese treatments, deep relaxation, and premium spa care for travelers and residents.",
+      title: "Best Massage in Bali & Premium Spa - Bali Victory Massage",
+      description: "Whether you choose to visit our premium spa or book a massage in Bali, Bali Victory Massage delivers a luxury wellness experience tailored to your needs. Available across Seminyak, Canggu, Kuta, Ubud, Nusa Dua, and Sanur, our professional therapists provide authentic Balinese treatments, deep relaxation, and premium spa care for travelers and residents.",
       whyChooseUs: {
         title: "Why Choose Bali Victory Massage?",
         intro: "At Bali Victory Massage, we combine luxury spa comfort, professional therapists, and premium Balinese wellness treatments in one trusted service.",
@@ -174,18 +175,21 @@ const About = () => {
           </motion.div>
         </div>
 
+        
+
         {/* CTA Section */}
         <motion.div {...fadeIn} className="bg-amber-950 rounded-[3rem] p-12 text-center text-white relative overflow-hidden shadow-2xl">
           <div className="relative z-10">
             <Smartphone className="w-12 h-12 text-amber-400 mx-auto mb-6" />
             <h3 className="text-2xl md:text-3xl font-bold mb-6">{data.aboutSession.howToBook.title}</h3>
             <p className="text-amber-100/70 mb-10 max-w-xl mx-auto">{data.aboutSession.howToBook.instruction}</p>
-            <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="https://wa.me/your-number" className="inline-block bg-amber-600 px-12 py-4 rounded-full font-bold uppercase tracking-widest text-xs">
-              Book WhatsApp
+            <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="https://wa.me/your-number" className="inline-block bg-amber-600 px-12 py-4 rounded-full font-bold uppercase tracking-widest text-xl">
+              +62 8570 7751 756
             </motion.a>
           </div>
         </motion.div>
       </section>
+      <Footer/>
     </div>
   );
 };

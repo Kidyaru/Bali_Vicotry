@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import PackageDetail from "../components/PackageDetail";
 import ServiceGrid from "../components/ServiceGrid";
@@ -19,10 +20,9 @@ function Home() {
       </div>
 
       <PackageDetail />
+      <Footer/>
 
-      <section className="py-20 text-center bg-black">
-        <h1 className="text-white">Ini Halaman Home</h1>
-      </section>
+      
     </>
   );
 }
