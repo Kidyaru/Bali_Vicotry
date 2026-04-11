@@ -11,11 +11,11 @@ const Hero = () => {
           Bali Victory Massage
         </h1>
 
-        <p className="mt-4 text-lg md:text-xl text-white font-medium drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+        <p className="mt-4 text-lg md:text-xl text-white font-serif font-medium drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
           Premium Massage in Bali – Relax at Our Premium Spa
         </p>
 
-        <p className="mt-4 text-gray-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+        <p className="mt-4 font-serif text-gray-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
           Visit our spa and enjoy professional massage treatments in a peaceful,
           private, and luxurious setting.
         </p>
