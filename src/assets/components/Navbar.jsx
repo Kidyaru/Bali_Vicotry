@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"; // Tambahkan useEffect
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react"; 
-import { motion, AnimatePresence } from "framer-motion"; 
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Logo_img from "../img/Logo_img_Bali.png";
 
 const Navbar = ({ isScrolled }) => {
@@ -14,9 +14,10 @@ const Navbar = ({ isScrolled }) => {
   useEffect(() => {
     const handleScroll = () => {
       // Periksa apakah user sudah scroll sampai bawah (dengan toleransi 20px)
-      const scrolledToBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 20;
+      const scrolledToBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 20;
       setIsBottom(scrolledToBottom);
-      
+
       // Tutup menu otomatis jika user scroll sampai bawah saat menu terbuka
       if (scrolledToBottom) setIsOpen(false);
     };
@@ -69,20 +70,26 @@ const Navbar = ({ isScrolled }) => {
               isScrolled ? "text-gray-900" : "text-white"
             }`}
           >
-            <img src={Logo_img} alt="Logo" className="h-10 md:h-10 w-auto object-contain block" />
+            <img
+              src={Logo_img}
+              alt="Logo"
+              className="h-10 md:h-10 w-auto object-contain block"
+            />
             <span className="font-serif text-lg tracking-[0.2em] md:text-xl md:tracking-[0.4em] transform md:translate-y-[6.5px]">
               VICTORY
             </span>
           </Link>
 
-          <div className={`hidden md:flex space-x-10 font-medium text-sm uppercase tracking-widest transition-colors ${
-            isScrolled ? "text-gray-800" : "text-white"
-          }`}>
+          <div
+            className={`hidden md:flex space-x-10 font-medium text-sm uppercase tracking-widest transition-colors ${
+              isScrolled ? "text-gray-800" : "text-white"
+            }`}
+          >
             {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                to={link.path} 
-                onClick={link.action} 
+              <Link
+                key={link.name}
+                to={link.path}
+                onClick={link.action}
                 className="hover:text-amber-500 transition-colors"
               >
                 {link.name}
@@ -90,18 +97,23 @@ const Navbar = ({ isScrolled }) => {
             ))}
           </div>
 
-          <button className={`px-6 md:px-8 py-2 md:py-2.5 rounded-full font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all ${
-            isScrolled ? "bg-amber-600 text-white hover:bg-amber-700 shadow-lg" : "border border-white/50 text-white hover:bg-white hover:text-black"
-          }`}>
+          <a
+            href="https://api.whatsapp.com/send/?phone=6285707751756&text=Hello+Bali+Victory+Massage+Canggu%2C+I+would+like+to+book+an+in-Call+massage.+Preferred+time%3A+___.&type=phone_number&app_absent=0"
+            className={`px-6 md:px-8 py-2 md:py-2.5 rounded-full font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all ${
+              isScrolled
+                ? "bg-amber-600 text-white hover:bg-amber-700 shadow-lg"
+                : "border border-white/50 text-white hover:bg-white hover:text-black"
+            }`}
+          >
             Book Now
-          </button>
+          </a>
         </div>
       </nav>
 
       {/* MOBILE MENU DENGAN ANIMASI HIDE SAAT DI BOTTOM */}
       <AnimatePresence>
         {!isBottom && ( // Hanya tampilkan jika tidak di paling bawah
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50, scale: 0.5 }}

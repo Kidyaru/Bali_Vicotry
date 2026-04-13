@@ -84,13 +84,14 @@ const PackageDetail = () => {
                   </ul>
                 </div>
 
-                <motion.button 
+                <motion.a
+                href="https://api.whatsapp.com/send/?phone=6285707751756&text=Hello+Bali+Victory+Massage+Canggu%2C+I+would+like+to+book+an+in-Call+massage.+Preferred+time%3A+___.&type=phone_number&app_absent=0"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="mt-auto w-full bg-[#301608] hover:bg-amber-600 text-white py-4 px-10 rounded-full font-bold text-xs uppercase tracking-[0.3em] shadow-lg"
                 >
                   {pkg.buttonText}
-                </motion.button>
+                </motion.a>
               </motion.div>
             ))}
           </div>

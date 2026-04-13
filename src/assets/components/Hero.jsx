@@ -23,7 +23,7 @@ const Hero = () => {
         {/* Button */}
         <div className="mt-8 flex justify-center gap-4">
           <a
-            href="#"
+            href="https://api.whatsapp.com/send/?phone=6285707751756&text=Hello+Bali+Victory+Massage+Canggu%2C+I+would+like+to+book+an+in-Call+massage.+Preferred+time%3A+___.&type=phone_number&app_absent=0"
             className="bg-amber-500 text-white px-9 py-3 rounded-full font-bold shadow-lg hover:bg-amber-600 transition-all active:scale-95"
           >
             Book Your Massage Session

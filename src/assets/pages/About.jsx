@@ -183,7 +183,7 @@ const About = () => {
             <Smartphone className="w-12 h-12 text-amber-400 mx-auto mb-6" />
             <h3 className="text-2xl md:text-3xl font-bold mb-6">{data.aboutSession.howToBook.title}</h3>
             <p className="text-amber-100/70 mb-10 max-w-xl mx-auto">{data.aboutSession.howToBook.instruction}</p>
-            <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="https://wa.me/your-number" className="inline-block bg-amber-600 px-12 py-4 rounded-full font-bold uppercase tracking-widest text-xl">
+            <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="https://api.whatsapp.com/send/?phone=6285707751756&text=Hello+Bali+Victory+Massage+Canggu%2C+I+would+like+to+book+an+in-Call+massage.+Preferred+time%3A+___.&type=phone_number&app_absent=0" className="inline-block bg-amber-600 px-12 py-4 rounded-full font-bold uppercase tracking-widest text-xl">
               +62 8570 7751 756
             </motion.a>
           </div>

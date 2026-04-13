@@ -160,7 +160,7 @@ function ServiceGrid() {
                     <motion.a
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.95 }}
-                      href={`https://wa.me/?text=I%20want%20to%20book%20${encodeURIComponent(service.name)}`}
+                      href={`https://api.whatsapp.com/send/?phone=6285707751756&text=Hello+Bali+Victory+Massage+Canggu%2C+I+would+like+to+book+an+in-Call+massage.+Preferred+time%3A+___.&type=phone_number&app_absent=0`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full bg-amber-950 hover:bg-amber-600 text-white text-center py-4 px-2 rounded-2xl font-bold uppercase tracking-[0.1em] text-[10px] transition-colors duration-300 shadow-lg shadow-amber-900/20 flex items-center justify-center min-h-[50px]"

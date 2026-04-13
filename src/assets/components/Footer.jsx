@@ -18,7 +18,6 @@ const Footer = () => {
     <footer className="bg-[#1a1512] text-stone-300 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          
           {/* KOLOM 1 */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
@@ -33,15 +32,14 @@ const Footer = () => {
             </div>
 
             <p className="text-sm leading-relaxed text-stone-400">
-              The ultimate in-call massage experience in Bali. Bringing
-              professional therapeutic treatments directly to your doorstep,
-              hotel, or villa.
+              The ultimate massage experience in Bali. Bringing professional
+              therapeutic treatments directly to your doorstep, hotel, or villa.
             </p>
 
             <div className="flex gap-4">
               {/* Instagram */}
               <a
-                href="#"
+                href="https://www.instagram.com/balivictorymassage?igsh=djhic2EyeXU5cXZv"
                 className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-amber-600 transition-colors"
               >
                 <FaInstagram size={18} className="text-white" />
@@ -49,7 +47,7 @@ const Footer = () => {
 
               {/* Facebook */}
               <a
-                href="#"
+                href="https://www.facebook.com/balivictorymassage/"
                 className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-amber-600 transition-colors"
               >
                 <FaFacebook size={18} className="text-white" />
@@ -89,9 +87,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <button className="hover:text-amber-500">
+                <a
+                  className="hover:text-amber-500 cursor-pointer"
+                  href="https://api.whatsapp.com/send/?phone=6285707751756&text=Hello+Bali+Victory+Massage+Canggu%2C+I+would+like+to+book+an+in-Call+massage.+Preferred+time%3A+___.&type=phone_number&app_absent=0"
+                >
                   Book a Session
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -129,7 +130,8 @@ const Footer = () => {
             <div className="flex items-center gap-2 text-stone-400 mt-4">
               <FaMapMarkerAlt size={14} />
               <span className="text-xs">
-                Main Studio: Jl. Bumbak No.122, Kerobokan, Kec. Kuta Utara, Kabupaten Badung, Bali 80361, Indonesia
+                Main Studio: Jl. Bumbak No.122, Kerobokan, Kec. Kuta Utara,
+                Kabupaten Badung, Bali 80361, Indonesia
               </span>
             </div>
           </div>
